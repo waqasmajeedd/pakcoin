@@ -141,7 +141,12 @@ export const Navbar = ({ onOpenWhitepaper }) => {
                   className="px-4 py-2 rounded-xl bg-[#0e2417] border border-emerald-500/40 text-white font-semibold text-sm hover:border-emerald-400 flex items-center space-x-2 cursor-pointer shadow-lg"
                 >
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></div>
-                  <span>{truncatedAccount}</span>
+                  <div className="flex items-center space-x-1.5">
+                    <span className="px-2 py-0.5 rounded-md bg-emerald-950/90 border border-emerald-500/40 text-emerald-400 font-mono text-xs font-bold">
+                      {pakBalance} $PAK
+                    </span>
+                    <span className="hidden sm:inline">{truncatedAccount}</span>
+                  </div>
                   <ChevronDown className="w-4 h-4 text-emerald-400" />
                 </button>
 

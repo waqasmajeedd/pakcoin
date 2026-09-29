@@ -21,7 +21,7 @@ import {
 import confetti from "canvas-confetti";
 
 export const MiningDashboard = () => {
-  const { language, account, connectWallet, showToast } = useWeb3();
+  const { language, account, connectWallet, showToast, creditMinedPak, pakBalance, addTokenToMetaMask } = useWeb3();
   const t = translations[language].mining;
 
   const [isMining, setIsMining] = useState(false);
@@ -112,6 +112,8 @@ export const MiningDashboard = () => {
     }
 
     const claimed = minedBalance.toFixed(4);
+    const newTotal = creditMinedPak(claimed);
+
     confetti({
       particleCount: 100,
       spread: 80,
@@ -121,14 +123,14 @@ export const MiningDashboard = () => {
 
     showToast(
       language === "ur"
-        ? `مبارک ہو! ${claimed} $PAK کامیابی سے آپ کے والیٹ میں کلیم ہو گئے۔`
-        : `Success! ${claimed} $PAK transferred to your wallet!`
+        ? `مبارک ہو! ${claimed} $PAK آپ کے والیٹ میں کامیابی سے کریڈٹ ہو گئے۔ کُل بیلنس: ${newTotal} $PAK`
+        : `Success! ${claimed} $PAK credited to your wallet vault! Total: ${newTotal} $PAK`
     );
 
     setMinedBalance(0);
     setLogs((prev) => [
       ...prev,
-      `[CLAIM] Transferred ${claimed} $PAK directly to ${account.slice(0, 8)}...`,
+      `[CLAIM] Credited ${claimed} $PAK to ${account.slice(0, 8)}... (Total: ${newTotal} PAK)`,
     ]);
   };
 
@@ -287,6 +289,42 @@ export const MiningDashboard = () => {
                   <span>{t.btnClaim}</span>
                 </button>
               </div>
+
+              {/* Connected Wallet Vault Info */}
+              {account && (
+                <div className="mt-4 p-4 rounded-2xl bg-[#041a0d] border border-emerald-500/40 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg">
+                  <div className="flex items-center space-x-3 w-full sm:w-auto">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                      <ShieldCheck className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">
+                        {language === "ur" ? "منسلک میٹاماسک والیٹ والٹ" : "Connected MetaMask Vault"}
+                      </span>
+                      <span className="text-xs font-mono font-bold text-emerald-300">
+                        {account.slice(0, 8)}...{account.slice(-6)}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between sm:justify-end space-x-3 w-full sm:w-auto border-t sm:border-t-0 border-emerald-500/20 pt-2 sm:pt-0">
+                    <div className="text-left sm:text-right">
+                      <span className="text-[10px] text-gray-400 block font-semibold">
+                        {language === "ur" ? "محفوظ کلیم شدہ بیلنس" : "Claimed Vault Balance"}
+                      </span>
+                      <span className="text-base font-black text-white font-mono">
+                        {pakBalance} <span className="text-emerald-400 text-xs">$PAK</span>
+                      </span>
+                    </div>
+                    <button
+                      onClick={addTokenToMetaMask}
+                      className="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs transition-all flex items-center space-x-1 cursor-pointer shadow-md"
+                      title="Add $PAK to MetaMask"
+                    >
+                      <span>+ MetaMask</span>
+                    </button>
+                  </div>
+                </div>
+              )}
 
               {/* Live Terminal Log Stream */}
               <div className="mt-6">
