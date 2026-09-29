@@ -76,35 +76,19 @@ export const Web3Provider = ({ children }) => {
       const balanceWei = await provider.getBalance(userAddress);
       setBnbBalance(parseFloat(ethers.formatEther(balanceWei)).toFixed(4));
 
-      // Try reading Pak Coin balance if contract exists
+      // Read real on-chain Pak Coin balance directly from BSC Mainnet contract
       try {
         const contract = new ethers.Contract(CONTRACT_CONFIG.address, PAK_COIN_ABI, provider);
         const tokenBal = await contract.balanceOf(userAddress);
         const onChain = ethers.formatUnits(tokenBal, CONTRACT_CONFIG.decimals);
-        if (parseFloat(onChain) > 0) {
-          setPakBalance(onChain);
-        } else {
-          const vault = localStorage.getItem(`pak_vault_${userAddress.toLowerCase()}`) || "0";
-          setPakBalance(vault);
-        }
+        const formatted = parseFloat(onChain).toLocaleString(undefined, { maximumFractionDigits: 2 });
+        setPakBalance(formatted);
       } catch (err) {
-        // Contract not yet deployed on this network: read from user's Web3 vault
-        const vault = localStorage.getItem(`pak_vault_${userAddress.toLowerCase()}`) || "0";
-        setPakBalance(vault);
+        setPakBalance("0.00");
       }
     } catch (e) {
       console.warn("Failed to fetch balance:", e);
     }
-  };
-
-  const creditMinedPak = (amount) => {
-    if (!account) return "0";
-    const key = `pak_vault_${account.toLowerCase()}`;
-    const currentVault = parseFloat(localStorage.getItem(key) || "0");
-    const newTotal = (currentVault + parseFloat(amount)).toFixed(4);
-    localStorage.setItem(key, newTotal);
-    setPakBalance(newTotal);
-    return newTotal;
   };
 
   const connectWallet = async () => {
@@ -349,7 +333,6 @@ export const Web3Provider = ({ children }) => {
         chainId,
         bnbBalance,
         pakBalance,
-        creditMinedPak,
         isConnecting,
         connectWallet,
         disconnectWallet,

@@ -1,7 +1,7 @@
 import React from "react";
 import { useWeb3 } from "../context/Web3Context";
 import { translations } from "../translations/content";
-import { TrendingUp, DollarSign, Flame, Lock, Shield, Award } from "lucide-react";
+import { Database, ShieldCheck, Zap, Award } from "lucide-react";
 
 export const StatsBar = () => {
   const { language } = useWeb3();
@@ -9,32 +9,32 @@ export const StatsBar = () => {
 
   const items = [
     {
-      icon: DollarSign,
-      label: t.livePrice,
-      value: t.livePriceVal,
-      badge: "+180% Launch Target",
+      icon: Database,
+      label: t.stat1Label,
+      value: t.stat1Val,
+      badge: t.stat1Badge,
       badgeColor: "text-emerald-400 bg-emerald-950/80 border-emerald-500/30",
     },
     {
-      icon: TrendingUp,
-      label: t.marketCap,
-      value: t.marketCapVal,
-      badge: "Fully Diluted",
+      icon: ShieldCheck,
+      label: t.stat2Label,
+      value: t.stat2Val,
+      badge: t.stat2Badge,
       badgeColor: "text-cyan-400 bg-cyan-950/80 border-cyan-500/30",
     },
     {
-      icon: Lock,
-      label: t.liquidityLock,
-      value: t.liquidityLockVal,
-      badge: "PinkLock 2 Years",
+      icon: Zap,
+      label: t.stat3Label,
+      value: t.stat3Val,
+      badge: t.stat3Badge,
       badgeColor: "text-amber-400 bg-amber-950/80 border-amber-500/30",
     },
     {
-      icon: Flame,
-      label: t.burnRate,
-      value: t.burnRateVal,
-      badge: "Deflationary",
-      badgeColor: "text-red-400 bg-red-950/80 border-red-500/30",
+      icon: Award,
+      label: t.stat4Label,
+      value: t.stat4Val,
+      badge: t.stat4Badge,
+      badgeColor: "text-emerald-400 bg-emerald-950/80 border-emerald-500/30",
     },
   ];
 

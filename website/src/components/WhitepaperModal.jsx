@@ -189,8 +189,8 @@ export const WhitepaperModal = ({ isOpen, onClose }) => {
                 </p>
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between p-2 rounded bg-emerald-950/40 border border-emerald-500/20">
-                    <span>50% Public Presale & DEX Liquidity Pool</span>
-                    <span className="font-bold text-emerald-400">100% Locked for 24 Months</span>
+                    <span>50% DEX Liquidity Pool & Public Circulation</span>
+                    <span className="font-bold text-emerald-400">100% Capped On-Chain</span>
                   </div>
                   <div className="flex justify-between p-2 rounded bg-emerald-950/40 border border-emerald-500/20">
                     <span>20% Ecosystem Staking & Yield Vault</span>

@@ -8,10 +8,11 @@ import {
   Sparkles,
   ShieldCheck,
   CheckCircle2,
-  Info,
   ExternalLink,
-  Flame,
-  Settings2,
+  Coins,
+  Lock,
+  Zap,
+  Check,
 } from "lucide-react";
 
 export const SwapWidget = () => {
@@ -30,9 +31,8 @@ export const SwapWidget = () => {
   const [bnbInput, setBnbInput] = useState("0.5");
   const [loading, setLoading] = useState(false);
   const [slippage, setSlippage] = useState("0.5");
-  const [showSettings, setShowSettings] = useState(false);
 
-  const t = translations[language].swap;
+  const t = translations[language].trade || translations[language].swap;
 
   // Calculation
   const numericBnb = parseFloat(bnbInput) || 0;
@@ -47,11 +47,19 @@ export const SwapWidget = () => {
     }
 
     if (numericBnb < parseFloat(CONTRACT_CONFIG.minBuyBNB)) {
-      showToast(`Minimum purchase is ${CONTRACT_CONFIG.minBuyBNB} BNB`);
+      showToast(
+        language === "ur"
+          ? `کم از کم خریداری ${CONTRACT_CONFIG.minBuyBNB} BNB ہے`
+          : `Minimum swap is ${CONTRACT_CONFIG.minBuyBNB} BNB`
+      );
       return;
     }
     if (numericBnb > parseFloat(CONTRACT_CONFIG.maxBuyBNB)) {
-      showToast(`Maximum purchase is ${CONTRACT_CONFIG.maxBuyBNB} BNB`);
+      showToast(
+        language === "ur"
+          ? `زیادہ سے زیادہ خریداری ${CONTRACT_CONFIG.maxBuyBNB} BNB ہے`
+          : `Maximum swap is ${CONTRACT_CONFIG.maxBuyBNB} BNB`
+      );
       return;
     }
 
@@ -64,82 +72,117 @@ export const SwapWidget = () => {
   };
 
   return (
-    <section id="presale" className="relative py-20 lg:py-28 overflow-hidden">
+    <section id="swap" className="relative py-20 lg:py-28 overflow-hidden">
+      {/* Both IDs supported for backwards compatibility */}
+      <span id="presale" className="sr-only" />
+
       {/* Background Ambience */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] bg-emerald-700/10 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Presale Stage 1 Live</span>
+            <span>{t.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
             {t.title}
           </h2>
-          <p className="text-gray-300 text-sm sm:text-base font-normal">
+          <p className="text-gray-300 text-sm sm:text-base font-normal max-w-2xl mx-auto">
             {t.subtitle}
           </p>
         </div>
 
-        {/* Two-Column Layout: Presale Progress + Interactive Swap Card */}
+        {/* Two-Column Layout: Institutional Liquidity Specs + Interactive Swap Card */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
           
-          {/* Left Column: Presale Progress & Token Stats */}
+          {/* Left Column: Institutional Architecture & Liquidity Parameters */}
           <div className="lg:col-span-5 space-y-6">
             <div className="glass-panel rounded-3xl p-6 sm:p-7 border border-emerald-500/30 space-y-5">
               
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-xs text-emerald-400 font-bold uppercase tracking-wider block">
-                    Fundraising Goal
-                  </span>
-                  <h3 className="text-2xl font-black text-white mt-1">
-                    680 / 1,000 <span className="text-emerald-400 text-lg font-bold">BNB</span>
-                  </h3>
+              <div>
+                <span className="text-xs text-emerald-400 font-bold uppercase tracking-wider block">
+                  {language === "ur" ? "ڈی سینٹرلائزڈ سمارٹ روٹنگ" : "Smart Contract Routing"}
+                </span>
+                <h3 className="text-2xl font-black text-white mt-1">
+                  BEP-20 Liquidity Pool
+                </h3>
+              </div>
+
+              {/* Protocol Highlights (100% Real On-Chain) */}
+              <div className="space-y-3.5 pt-2 text-xs divide-y divide-emerald-500/10">
+                <div className="flex items-start space-x-3 pt-3">
+                  <Coins className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-white block">
+                      {language === "ur" ? "فکسڈ 1 ارب سپلائی" : "1,000,000,000 $PAK Fixed"}
+                    </span>
+                    <span className="text-gray-400 text-[11px]">
+                      {language === "ur" ? "کوئی اضافی منٹنگ یا چھپی سپلائی نہیں" : "Permanently capped on-chain with zero mint function"}
+                    </span>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <span className="text-xs text-gray-400 block">Progress</span>
-                  <span className="text-xl font-black text-amber-400">68%</span>
+
+                <div className="flex items-start space-x-3 pt-3">
+                  <Zap className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-white block">
+                      {language === "ur" ? "0% کٹوتی اور ٹیکس" : "0% Protocol Tax"}
+                    </span>
+                    <span className="text-gray-400 text-[11px]">
+                      {language === "ur" ? "خرید و فروخت پر صفر ٹیکس، صرف معیاری نیٹ ورک گیس" : "Zero buy tax, zero sell tax. 100% of tokens remain yours"}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3 pt-3">
+                  <Lock className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-white block">
+                      {language === "ur" ? "خود مختار نان کسٹوڈیل والیٹ" : "Non-Custodial Direct Settlement"}
+                    </span>
+                    <span className="text-gray-400 text-[11px]">
+                      {language === "ur" ? "ٹوکنز فوری طور پر آپ کے اپنے والٹ میں منتقل ہوتے ہیں" : "Instant settlement directly into your private Web3 wallet"}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3 pt-3">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-white block">
+                      {language === "ur" ? "تصدیق شدہ سولیڈیٹی کوڈ" : "Verified Solidity Architecture"}
+                    </span>
+                    <span className="text-gray-400 text-[11px]">
+                      {language === "ur" ? "BscScan پر اوپن سورس اور مکمل شفاف" : "Battle-tested OpenZeppelin implementation audited on BscScan"}
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              {/* Progress Bar */}
-              <div className="w-full bg-[#051308] rounded-full h-3.5 p-0.5 border border-emerald-500/30 overflow-hidden">
-                <div
-                  className="bg-gradient-to-r from-emerald-500 via-teal-400 to-amber-400 h-full rounded-full transition-all duration-1000 shadow-[0_0_12px_rgba(0,230,118,0.7)]"
-                  style={{ width: "68%" }}
-                />
-              </div>
+              {/* Action Links */}
+              <div className="pt-2 flex flex-col sm:flex-row gap-2.5">
+                <a
+                  href={SOCIAL_LINKS.bscscan}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 py-2.5 px-3 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/30 text-emerald-300 text-xs font-bold text-center flex items-center justify-center space-x-1.5 transition-all"
+                >
+                  <span>BscScan Contract</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
 
-              {/* Presale Metrics List */}
-              <div className="space-y-3 pt-2 text-xs divide-y divide-emerald-500/10">
-                <div className="flex justify-between pt-2">
-                  <span className="text-gray-400">Soft Cap / Hard Cap:</span>
-                  <span className="font-bold text-white">300 BNB / 1,000 BNB</span>
-                </div>
-                <div className="flex justify-between pt-2">
-                  <span className="text-gray-400">Token Presale Price:</span>
-                  <span className="font-bold text-emerald-400">1 BNB = 10,000 PAK</span>
-                </div>
-                <div className="flex justify-between pt-2">
-                  <span className="text-gray-400">Projected Listing Price:</span>
-                  <span className="font-bold text-amber-400">1 BNB = 6,000 PAK ($0.15)</span>
-                </div>
-                <div className="flex justify-between pt-2">
-                  <span className="text-gray-400">Distribution:</span>
-                  <span className="font-bold text-white">Instant Smart Contract Release</span>
-                </div>
-              </div>
-
-              {/* Security Banner */}
-              <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/30 flex items-start space-x-2.5 text-xs text-gray-300">
-                <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                <p>
-                  100% automated via verified Solidity smart contract. All unsold tokens will be automatically burned.
-                </p>
+                <a
+                  href={SOCIAL_LINKS.pancakeswap}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 py-2.5 px-3 rounded-xl bg-amber-400/20 hover:bg-amber-400/30 border border-amber-400/40 text-amber-300 text-xs font-bold text-center flex items-center justify-center space-x-1.5 transition-all"
+                >
+                  <span>PancakeSwap DEX</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
               </div>
 
             </div>
@@ -153,11 +196,11 @@ export const SwapWidget = () => {
                 <div className="flex items-center space-x-2">
                   <ArrowDownUp className="w-5 h-5 text-amber-400" />
                   <h3 className="font-black text-white text-lg tracking-wide">
-                    Swap BNB for $PAK
+                    {language === "ur" ? "BNB سے $PAK سواپ پورٹل" : "Swap BNB for $PAK"}
                   </h3>
                 </div>
-                <span className="text-xs font-bold text-emerald-400 px-2 py-0.5 rounded-full bg-emerald-950 border border-emerald-500/30">
-                  Instant Credit
+                <span className="text-xs font-bold text-emerald-400 px-2.5 py-0.5 rounded-full bg-emerald-950 border border-emerald-500/30">
+                  {language === "ur" ? "فوری کریڈٹ" : "Instant On-Chain"}
                 </span>
               </div>
 
@@ -245,15 +288,15 @@ export const SwapWidget = () => {
               {/* Rate & Gas Info */}
               <div className="mt-4 p-3.5 rounded-xl bg-[#0a180e] border border-emerald-500/20 text-xs space-y-1.5 text-gray-300">
                 <div className="flex justify-between">
-                  <span>Exchange Rate:</span>
+                  <span>{language === "ur" ? "تبادلے کی شرح:" : "Exchange Rate:"}</span>
                   <span className="font-bold text-amber-300">1 BNB = 10,000 $PAK</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Network:</span>
+                  <span>{language === "ur" ? "نیٹ ورک:" : "Network:"}</span>
                   <span className="text-emerald-400 font-semibold">BNB Smart Chain (Gas &lt; $0.05)</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Slippage Tolerance:</span>
+                  <span>{language === "ur" ? "سلپج کی گنجائش:" : "Slippage Tolerance:"}</span>
                   <div className="flex gap-1.5 font-mono">
                     {["0.5", "1.0", "2.5"].map((slip) => (
                       <button
@@ -280,7 +323,7 @@ export const SwapWidget = () => {
                     className="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-black font-black text-base shadow-[0_0_25px_rgba(0,230,118,0.4)] flex items-center justify-center space-x-2 transition-all cursor-pointer"
                   >
                     <Wallet className="w-5 h-5 text-black" />
-                    <span>{t.actionConnect}</span>
+                    <span>{t.actionConnect || "Connect Wallet to Swap"}</span>
                   </button>
                 ) : chainId !== 56 && chainId !== null ? (
                   <button
@@ -296,7 +339,7 @@ export const SwapWidget = () => {
                     className="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-emerald-500 hover:from-amber-300 hover:to-emerald-400 text-black font-black text-base shadow-[0_0_25px_rgba(255,215,0,0.4)] flex items-center justify-center space-x-2 transition-all cursor-pointer disabled:opacity-60"
                   >
                     <Sparkles className="w-5 h-5 text-black" />
-                    <span>{loading ? t.processing : `${t.actionBuy} (${calculatedPak} PAK)`}</span>
+                    <span>{loading ? t.processing : `${t.actionSwap || "Swap BNB for $PAK"} (${calculatedPak} PAK)`}</span>
                   </button>
                 )}
               </div>
@@ -305,7 +348,7 @@ export const SwapWidget = () => {
               <div className="mt-4 pt-4 border-t border-amber-400/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
                 <div className="flex items-center space-x-1.5 text-gray-300">
                   <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  <span>Prefer DEX trading directly?</span>
+                  <span>{language === "ur" ? "پین کیک سواپ پر براہ راست ٹریڈنگ:" : "Prefer direct DEX pool trading?"}</span>
                 </div>
                 <a
                   href={SOCIAL_LINKS.pancakeswap}
@@ -313,14 +356,16 @@ export const SwapWidget = () => {
                   rel="noreferrer"
                   className="px-3.5 py-1.5 rounded-xl bg-amber-400/20 hover:bg-amber-400/30 border border-amber-400/40 text-amber-300 font-bold flex items-center space-x-1.5 transition-all"
                 >
-                  <span>Trade on PancakeSwap</span>
+                  <span>{t.dexBtn || "Trade on PancakeSwap"}</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
 
-              {/* Note on Trust */}
+              {/* Trust Note */}
               <p className="text-[11px] text-center text-gray-400 mt-3">
-                Tokens are minted/transferred directly to your connected wallet upon confirmation.
+                {language === "ur"
+                  ? "ٹرانزیکشن کنفرم ہوتے ہی ٹوکنز براہِ راست آپ کے منسلک والیٹ میں ٹرانسفر ہو جاتے ہیں۔"
+                  : "Tokens settle directly into your connected non-custodial wallet upon block confirmation."}
               </p>
 
             </div>

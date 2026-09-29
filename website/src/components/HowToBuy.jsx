@@ -61,7 +61,7 @@ export const HowToBuy = () => {
         <div className="mt-12 p-6 rounded-3xl glass-panel-gold border border-amber-400/30 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1 text-center sm:text-left">
             <h4 className="font-extrabold text-white text-base">
-              {language === 'ur' ? "کیا آپ کو BNB حاصل کرنے میں رہنمائی چاہیے؟" : "Need help acquiring BNB for the Presale?"}
+              {language === 'ur' ? "کیا آپ کو BNB حاصل کرنے میں رہنمائی چاہیے؟" : "Need help acquiring BNB on BNB Chain?"}
             </h4>
             <p className="text-xs text-gray-300">
               {language === 'ur' 
@@ -70,7 +70,7 @@ export const HowToBuy = () => {
             </p>
           </div>
           <a
-            href="#presale"
+            href="#swap"
             className="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-extrabold text-xs shadow-lg transition-all shrink-0 cursor-pointer"
           >
             {language === 'ur' ? "سواپ پر واپس جائیں ↑" : "Go to Swap Portal ↑"}

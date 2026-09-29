@@ -3,10 +3,10 @@ import { Web3Provider, useWeb3 } from "./context/Web3Context";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { StatsBar } from "./components/StatsBar";
-import { Features } from "./components/Features";
 import { SwapWidget } from "./components/SwapWidget";
+import { WalletsSection } from "./components/WalletsSection";
+import { Features } from "./components/Features";
 import { Tokenomics } from "./components/Tokenomics";
-import { StakingSimulator } from "./components/StakingSimulator";
 import { Roadmap } from "./components/Roadmap";
 import { HowToBuy } from "./components/HowToBuy";
 import { FAQ } from "./components/FAQ";
@@ -42,9 +42,9 @@ function MainContent() {
         onOpenSigner={() => setSignerOpen(true)}
       />
 
-      {/* Navbar */}
+      {/* Navbar with Zcash Mega-Menu Hierarchy */}
       <Navbar
-        onOpenWhitepaper={() => setWhitepaperOpen(true)}
+        onOpenWhitepaper={() => setWhitepaperOpen(false || true)}
         onOpenSigner={() => setSignerOpen(true)}
         onOpenTrustWallet={() => setTrustWalletOpen(true)}
       />
@@ -57,9 +57,11 @@ function MainContent() {
         />
         <StatsBar />
         <SwapWidget />
+        <WalletsSection
+          onOpenTrustWallet={() => setTrustWalletOpen(true)}
+        />
         <Features />
         <Tokenomics />
-        <StakingSimulator />
         <Roadmap />
         <HowToBuy />
         <FAQ />

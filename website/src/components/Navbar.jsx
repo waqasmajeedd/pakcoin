@@ -124,7 +124,7 @@ export const Navbar = ({ onOpenWhitepaper, onOpenSigner, onOpenTrustWallet }) =>
               {activeDropdown === "use" && (
                 <div className="absolute top-full left-0 mt-2 w-72 rounded-2xl bg-[#06140a] border border-emerald-500/30 p-2.5 shadow-2xl space-y-1 animate-fadeIn">
                   <a
-                    href="#presale"
+                    href="#swap"
                     onClick={() => setActiveDropdown(null)}
                     className="p-2.5 rounded-xl hover:bg-emerald-950/80 flex items-start space-x-3 transition-colors group"
                   >
@@ -135,7 +135,7 @@ export const Navbar = ({ onOpenWhitepaper, onOpenSigner, onOpenTrustWallet }) =>
                       <span className="font-bold text-white text-xs block group-hover:text-emerald-300">
                         {t.getPak} (Swap Portal)
                       </span>
-                      <span className="text-[11px] text-gray-400">Direct BNB to $PAK presale swap</span>
+                      <span className="text-[11px] text-gray-400">Direct on-chain BNB to $PAK swap</span>
                     </div>
                   </a>
 
@@ -472,7 +472,7 @@ export const Navbar = ({ onOpenWhitepaper, onOpenSigner, onOpenTrustWallet }) =>
 
             {/* Zcash Style Action Button: Get $PAK */}
             <a
-              href="#presale"
+              href="#swap"
               className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-black text-xs shadow-md shadow-amber-400/20 transition-all cursor-pointer flex items-center space-x-1"
             >
               <span>{t.getPak}</span>
@@ -560,7 +560,7 @@ export const Navbar = ({ onOpenWhitepaper, onOpenSigner, onOpenTrustWallet }) =>
             </span>
             <div className="grid grid-cols-2 gap-2 text-xs">
               <a
-                href="#presale"
+                href="#swap"
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2.5 rounded-xl bg-[#091f11] border border-emerald-500/20 text-gray-200 font-semibold"
               >

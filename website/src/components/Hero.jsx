@@ -9,10 +9,11 @@ import {
   Sparkles,
   ArrowRight,
   FileText,
-  PlusCircle,
   ExternalLink,
-  Flame,
+  Coins,
   Lock,
+  Zap,
+  Smartphone,
 } from "lucide-react";
 
 export const Hero = ({ onOpenWhitepaper, onOpenTrustWallet }) => {
@@ -66,10 +67,10 @@ export const Hero = ({ onOpenWhitepaper, onOpenTrustWallet }) => {
             {/* Action Buttons */}
             <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
               <a
-                href="#presale"
+                href="#swap"
                 className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-green-600 hover:from-emerald-400 hover:to-green-500 text-black font-extrabold text-sm sm:text-base shadow-[0_0_25px_rgba(0,230,118,0.4)] hover:shadow-[0_0_35px_rgba(0,230,118,0.6)] transition-all flex items-center space-x-2 group cursor-pointer"
               >
-                <span>{t.buyBtn}</span>
+                <span>{t.swapBtn || "DEX Swap Portal"}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
 
@@ -87,7 +88,8 @@ export const Hero = ({ onOpenWhitepaper, onOpenTrustWallet }) => {
                 onClick={onOpenTrustWallet}
                 className="px-5 py-3.5 rounded-xl bg-[#092013] hover:bg-[#10321e] border border-emerald-500/40 text-emerald-200 font-bold text-sm transition-all flex items-center space-x-2 cursor-pointer shadow-md"
               >
-                <span>📱 Trust Wallet Guide</span>
+                <Smartphone className="w-4 h-4 text-emerald-400" />
+                <span>{t.walletsBtn || "Wallets Guide"}</span>
               </button>
 
               <button
@@ -145,15 +147,15 @@ export const Hero = ({ onOpenWhitepaper, onOpenTrustWallet }) => {
             <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-xs text-gray-400">
               <div className="flex items-center space-x-1.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Audited OpenZeppelin Architecture</span>
+                <span>Audited OpenZeppelin Code</span>
               </div>
               <div className="flex items-center space-x-1.5">
                 <Lock className="w-4 h-4 text-amber-400" />
-                <span>100% Liquidity Locked</span>
+                <span>Zero Mint Function (1B Capped)</span>
               </div>
               <div className="flex items-center space-x-1.5">
-                <Flame className="w-4 h-4 text-red-400" />
-                <span>Deflationary Burn Ready</span>
+                <Zap className="w-4 h-4 text-emerald-400" />
+                <span>0% Transaction Tax</span>
               </div>
             </div>
 
@@ -180,12 +182,12 @@ export const Hero = ({ onOpenWhitepaper, onOpenTrustWallet }) => {
                         Pak Coin ($PAK)
                       </h3>
                       <p className="text-xs text-emerald-400 font-semibold">
-                        Binance Smart Chain (BEP-20)
+                        BNB Smart Chain (BEP-20)
                       </p>
                     </div>
                   </div>
-                  <span className="px-2.5 py-1 rounded-full text-xs font-black bg-amber-400/20 text-amber-300 border border-amber-400/30">
-                    STAGE 1
+                  <span className="px-2.5 py-1 rounded-full text-xs font-black bg-emerald-400/20 text-emerald-300 border border-emerald-400/30">
+                    VERIFIED BEP-20
                   </span>
                 </div>
 
@@ -199,10 +201,10 @@ export const Hero = ({ onOpenWhitepaper, onOpenTrustWallet }) => {
                   />
                   <div className="mt-4 text-center">
                     <div className="text-2xl font-black text-white">
-                      1 BNB = <span className="text-emerald-400">10,000 $PAK</span>
+                      1,000,000,000 <span className="text-emerald-400">$PAK</span>
                     </div>
                     <div className="text-xs text-amber-400/90 font-medium mt-0.5">
-                      Estimated Listing: $0.15 per PAK (+250% Growth)
+                      Fixed Supply • Zero Tax • Non-Custodial
                     </div>
                   </div>
                 </div>
@@ -214,26 +216,26 @@ export const Hero = ({ onOpenWhitepaper, onOpenTrustWallet }) => {
                     <span className="text-white font-bold text-sm">{t.statSupplyVal}</span>
                   </div>
                   <div className="p-3 rounded-xl bg-[#07170c] border border-emerald-500/20">
-                    <span className="text-gray-400 block">{t.statHolders}</span>
-                    <span className="text-emerald-400 font-bold text-sm">{t.statHoldersVal}</span>
+                    <span className="text-gray-400 block">{t.statNetwork}</span>
+                    <span className="text-emerald-400 font-bold text-sm">BNB Chain (BEP-20)</span>
                   </div>
                   <div className="p-3 rounded-xl bg-[#07170c] border border-emerald-500/20">
-                    <span className="text-gray-400 block">{t.statStage}</span>
-                    <span className="text-amber-400 font-bold text-sm">Public Presale</span>
+                    <span className="text-gray-400 block">{t.statTax}</span>
+                    <span className="text-amber-400 font-bold text-sm">{t.statTaxVal}</span>
                   </div>
                   <div className="p-3 rounded-xl bg-[#07170c] border border-emerald-500/20">
-                    <span className="text-gray-400 block">{t.statListing}</span>
-                    <span className="text-white font-bold text-sm">PancakeSwap / CEX</span>
+                    <span className="text-gray-400 block">{t.statSpeed}</span>
+                    <span className="text-white font-bold text-sm">{t.statSpeedVal}</span>
                   </div>
                 </div>
 
                 {/* Quick CTA inside card */}
                 <div className="mt-5 grid grid-cols-2 gap-2.5">
                   <a
-                    href="#presale"
+                    href="#swap"
                     className="block text-center py-2.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300 font-extrabold text-xs transition-all"
                   >
-                    Presale Swap ↓
+                    DEX Swap Portal ↓
                   </a>
                   <a
                     href={SOCIAL_LINKS.pancakeswap}

@@ -40,7 +40,7 @@ export const Footer = ({ onOpenWhitepaper, onOpenSigner }) => {
             <p className={`text-sm text-gray-400 max-w-sm leading-relaxed ${language === 'ur' ? 'urdu-font text-base' : ''}`}>
               {language === "ur"
                 ? "پاک کوائن ($PAK) ایک غیر مرکزی خود مختار ڈیجیٹل اثاثہ ہے۔ کم ترین فیس، تیز رفتار عالمی ادائیگیاں اور محفوظ مالیاتی مستقبل۔"
-                : "Pak Coin ($PAK) is a decentralized cryptocurrency powering instant borderless payments, staking yields, and Web3 commerce."}
+                : "Pak Coin ($PAK) is a decentralized cryptocurrency powering instant borderless payments, decentralized liquidity, and Web3 commerce."}
             </p>
 
             {/* Social Icons */}
@@ -114,13 +114,13 @@ export const Footer = ({ onOpenWhitepaper, onOpenSigner }) => {
                 </a>
               </li>
               <li>
-                <a href="#presale" className="hover:text-emerald-400 transition-colors">
-                  Presale Portal
+                <a href="#swap" className="hover:text-emerald-400 transition-colors">
+                  DEX Swap Portal
                 </a>
               </li>
               <li>
-                <a href="#staking" className="hover:text-emerald-400 transition-colors">
-                  Staking Simulator
+                <a href="#wallets" className="hover:text-emerald-400 transition-colors">
+                  Supported Wallets
                 </a>
               </li>
               <li>
