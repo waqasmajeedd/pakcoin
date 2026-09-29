@@ -4,7 +4,7 @@ import { translations } from "../translations/content";
 import { CONTRACT_CONFIG, SOCIAL_LINKS } from "../constants/contractInfo";
 import { Copy, Check, ExternalLink, Send } from "lucide-react";
 
-export const Footer = ({ onOpenWhitepaper }) => {
+export const Footer = ({ onOpenWhitepaper, onOpenSigner }) => {
   const { language, showToast } = useWeb3();
   const t = translations[language].footer;
 
@@ -134,6 +134,14 @@ export const Footer = ({ onOpenWhitepaper }) => {
                   className="text-amber-400 hover:text-amber-300 font-bold transition-colors cursor-pointer"
                 >
                   Read Whitepaper 1.2
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={onOpenSigner}
+                  className="text-emerald-400 hover:text-emerald-300 font-bold transition-colors cursor-pointer flex items-center space-x-1"
+                >
+                  <span>🔑 BscScan Ownership Signer</span>
                 </button>
               </li>
             </ul>

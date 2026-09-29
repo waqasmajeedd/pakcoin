@@ -13,10 +13,12 @@ import { HowToBuy } from "./components/HowToBuy";
 import { FAQ } from "./components/FAQ";
 import { Footer } from "./components/Footer";
 import { WhitepaperModal } from "./components/WhitepaperModal";
+import { SignatureModal } from "./components/SignatureModal";
 import { Sparkles, CheckCircle2 } from "lucide-react";
 
 function MainContent() {
   const [whitepaperOpen, setWhitepaperOpen] = useState(false);
+  const [signerOpen, setSignerOpen] = useState(false);
   const { toastMessage } = useWeb3();
 
   return (
@@ -33,7 +35,10 @@ function MainContent() {
       )}
 
       {/* Navbar */}
-      <Navbar onOpenWhitepaper={() => setWhitepaperOpen(true)} />
+      <Navbar
+        onOpenWhitepaper={() => setWhitepaperOpen(true)}
+        onOpenSigner={() => setSignerOpen(true)}
+      />
 
       {/* Main Sections */}
       <main className="flex-1">
@@ -50,12 +55,21 @@ function MainContent() {
       </main>
 
       {/* Footer */}
-      <Footer onOpenWhitepaper={() => setWhitepaperOpen(true)} />
+      <Footer
+        onOpenWhitepaper={() => setWhitepaperOpen(true)}
+        onOpenSigner={() => setSignerOpen(true)}
+      />
 
       {/* Interactive Whitepaper Modal */}
       <WhitepaperModal
         isOpen={whitepaperOpen}
         onClose={() => setWhitepaperOpen(false)}
+      />
+
+      {/* BscScan Ownership Signature Modal */}
+      <SignatureModal
+        isOpen={signerOpen}
+        onClose={() => setSignerOpen(false)}
       />
 
     </div>

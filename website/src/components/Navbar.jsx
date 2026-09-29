@@ -14,7 +14,7 @@ import {
   Layers,
 } from "lucide-react";
 
-export const Navbar = ({ onOpenWhitepaper }) => {
+export const Navbar = ({ onOpenWhitepaper, onOpenSigner }) => {
   const {
     account,
     truncatedAccount,
@@ -122,6 +122,15 @@ export const Navbar = ({ onOpenWhitepaper }) => {
             >
               <PlusCircle className="w-3.5 h-3.5 text-emerald-400" />
               <span>+ $PAK</span>
+            </button>
+
+            {/* BscScan Ownership Signer Button */}
+            <button
+              onClick={onOpenSigner}
+              title="Generate BscScan Signature Hash"
+              className="px-2.5 py-1.5 rounded-lg bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold hover:bg-amber-500/30 transition-all flex items-center space-x-1 cursor-pointer"
+            >
+              <span>🔑 Sign Hash</span>
             </button>
 
             {/* Wallet Button */}
