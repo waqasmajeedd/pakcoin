@@ -1,0 +1,33 @@
+{
+  "name": "pak-coin-protocol",
+  "version": "1.0.0",
+  "description": "Pak Coin ($PAK) - Pakistan's Premier Decentralized Digital Asset & Web3 Ecosystem",
+  "main": "scripts/deploy.js",
+  "scripts": {
+    "dev": "npm --prefix website run dev",
+    "build": "npm --prefix website run build",
+    "preview": "npm --prefix website run preview",
+    "test": "npx hardhat test",
+    "compile": "npx hardhat compile",
+    "deploy:local": "npx hardhat run scripts/deploy.js --network localhost",
+    "deploy:bsc-testnet": "npx hardhat run scripts/deploy.js --network bscTestnet",
+    "deploy:bsc-mainnet": "npx hardhat run scripts/deploy.js --network bscMainnet"
+  },
+  "keywords": [
+    "pakcoin",
+    "crypto",
+    "pakistan",
+    "bep20",
+    "erc20",
+    "solidity",
+    "web3",
+    "dapp"
+  ],
+  "author": "Pak Coin Protocol Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^16.4.7",
+    "hardhat": "^2.22.18"
+  }
+}
