@@ -15,7 +15,7 @@ import {
   Lock,
 } from "lucide-react";
 
-export const Hero = ({ onOpenWhitepaper }) => {
+export const Hero = ({ onOpenWhitepaper, onOpenTrustWallet }) => {
   const { language, addTokenToMetaMask, showToast } = useWeb3();
   const t = translations[language].hero;
 
@@ -29,7 +29,7 @@ export const Hero = ({ onOpenWhitepaper }) => {
   };
 
   return (
-    <section className="relative overflow-hidden pt-12 pb-24 lg:pt-20 lg:pb-32">
+    <section className="relative overflow-hidden pt-8 pb-20 lg:pt-16 lg:pb-28">
       {/* Background Neon Orbs */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-emerald-600/15 rounded-full blur-[140px] pointer-events-none -z-10" />
       <div className="absolute top-40 right-10 w-[350px] h-[350px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none -z-10" />
@@ -41,9 +41,12 @@ export const Hero = ({ onOpenWhitepaper }) => {
           <div className="lg:col-span-7 text-center lg:text-left space-y-6">
             
             {/* Tag Badge */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-emerald-400 text-xs sm:text-sm font-bold shadow-lg">
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 text-xs sm:text-sm font-bold shadow-lg">
               <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
               <span>{t.tag}</span>
+              <span className="text-[10px] text-amber-300 font-extrabold px-1.5 py-0.2 rounded bg-amber-400/20 border border-amber-400/40">
+                BSC MAINNET
+              </span>
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
             </div>
 
@@ -61,29 +64,38 @@ export const Hero = ({ onOpenWhitepaper }) => {
             </p>
 
             {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
               <a
                 href="#presale"
-                className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-green-600 hover:from-emerald-400 hover:to-green-500 text-black font-extrabold text-base shadow-[0_0_25px_rgba(0,230,118,0.4)] hover:shadow-[0_0_35px_rgba(0,230,118,0.6)] transition-all flex items-center space-x-2 group cursor-pointer"
+                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-green-600 hover:from-emerald-400 hover:to-green-500 text-black font-extrabold text-sm sm:text-base shadow-[0_0_25px_rgba(0,230,118,0.4)] hover:shadow-[0_0_35px_rgba(0,230,118,0.6)] transition-all flex items-center space-x-2 group cursor-pointer"
               >
                 <span>{t.buyBtn}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
 
-              <button
-                onClick={onOpenWhitepaper}
-                className="px-6 py-3.5 rounded-xl bg-[#0b2113] hover:bg-[#11301c] border border-emerald-500/40 text-emerald-300 font-bold text-base hover:text-white transition-all flex items-center space-x-2 cursor-pointer shadow-md"
+              <a
+                href={SOCIAL_LINKS.pancakeswap}
+                target="_blank"
+                rel="noreferrer"
+                className="px-5 py-3.5 rounded-xl bg-[#1c1809] hover:bg-[#2e260e] border border-amber-400/50 text-amber-300 font-extrabold text-sm sm:text-base transition-all flex items-center space-x-2 shadow-md hover:shadow-amber-400/20"
               >
-                <FileText className="w-4 h-4 text-amber-400" />
-                <span>{t.whitepaperBtn}</span>
+                <span>🥞 PancakeSwap DEX</span>
+                <ExternalLink className="w-4 h-4 text-amber-400" />
+              </a>
+
+              <button
+                onClick={onOpenTrustWallet}
+                className="px-5 py-3.5 rounded-xl bg-[#092013] hover:bg-[#10321e] border border-emerald-500/40 text-emerald-200 font-bold text-sm transition-all flex items-center space-x-2 cursor-pointer shadow-md"
+              >
+                <span>📱 Trust Wallet Guide</span>
               </button>
 
               <button
-                onClick={addTokenToMetaMask}
-                className="px-5 py-3.5 rounded-xl bg-emerald-950/40 hover:bg-emerald-950/80 border border-emerald-500/30 text-gray-200 text-sm font-semibold hover:border-emerald-400 transition-all flex items-center space-x-2 cursor-pointer"
+                onClick={onOpenWhitepaper}
+                className="px-4 py-3.5 rounded-xl bg-emerald-950/40 hover:bg-emerald-950/80 border border-emerald-500/30 text-gray-300 hover:text-white font-semibold text-sm transition-all flex items-center space-x-1.5 cursor-pointer"
               >
-                <PlusCircle className="w-4 h-4 text-emerald-400" />
-                <span>{t.addTokenBtn}</span>
+                <FileText className="w-4 h-4 text-amber-400" />
+                <span>{t.whitepaperBtn}</span>
               </button>
             </div>
 
@@ -216,12 +228,21 @@ export const Hero = ({ onOpenWhitepaper }) => {
                 </div>
 
                 {/* Quick CTA inside card */}
-                <div className="mt-5">
+                <div className="mt-5 grid grid-cols-2 gap-2.5">
                   <a
                     href="#presale"
-                    className="block text-center w-full py-3 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300 font-extrabold text-sm transition-all"
+                    className="block text-center py-2.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/40 text-emerald-300 font-extrabold text-xs transition-all"
                   >
-                    Quick Swap Widget ↓
+                    Presale Swap ↓
+                  </a>
+                  <a
+                    href={SOCIAL_LINKS.pancakeswap}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block text-center py-2.5 rounded-xl bg-amber-400/20 hover:bg-amber-400/30 border border-amber-400/40 text-amber-300 font-extrabold text-xs transition-all flex items-center justify-center space-x-1"
+                  >
+                    <span>PancakeSwap</span>
+                    <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
 

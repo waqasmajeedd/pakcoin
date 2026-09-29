@@ -60,6 +60,9 @@ export const SOCIAL_LINKS = {
   discord: "https://discord.gg/pakcoin",
   github: "https://github.com/waqasmajeedd/pakcoin",
   bscscan: "https://bscscan.com/token/0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4",
+  pancakeswap: "https://pancakeswap.finance/swap?outputCurrency=0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4",
+  dexscreener: "https://dexscreener.com/bsc/0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4",
+  dextools: "https://www.dextools.io/app/en/bnb/pair-explorer/0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4",
   whitepaperUrl: "#whitepaper",
 };
 

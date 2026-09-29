@@ -240,7 +240,15 @@ export const translations = {
         },
         {
           q: "How do I add $PAK to MetaMask or Trust Wallet?",
-          a: "Simply click the '+ $PAK' button in our header to trigger automatic import, or manually add a custom token using our verified smart contract address with 18 decimals."
+          a: "Simply click the 'Trust Wallet Guide' or '+ $PAK' button on our site. In Trust Wallet, tap '+', choose BNB Smart Chain, and paste our contract address (0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4). Your full balance will show immediately."
+        },
+        {
+          q: "Why doesn't Pak Coin show automatically in Trust Wallet search?",
+          a: "All newly deployed tokens on BNB Smart Chain must be imported manually once via 'Add Custom Token' until they are indexed by global listing trackers (CoinGecko & CoinMarketCap). Once you add the contract address, your balance is 100% accessible."
+        },
+        {
+          q: "Can I trade $PAK directly on PancakeSwap DEX?",
+          a: "Yes! Pak Coin ($PAK) is a standard BEP-20 token live on BNB Smart Chain Mainnet. You can trade directly on PancakeSwap by pasting our contract address: 0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4."
         },
         {
           q: "Is the Smart Contract audited and secure?",
@@ -496,8 +504,16 @@ export const translations = {
           a: "بائننس، بائی بٹ یا کسی بھی کریپٹو ایکسچینج سے آپ باآسانی کارڈ یا بینک سے BNB خرید کر اپنے میٹاماسک میں ٹرانسفر کر سکتے ہیں۔"
         },
         {
-          q: "میں پاک کوائن کو میٹاماسک میں کیسے دیکھ سکتا ہوں؟",
-          a: "ویب سائٹ پر اوپر موجود '+ $PAK' بٹن پر کلک کریں، یا کسٹم ٹوکن کے آپشن میں جا کر ہمارا سمارٹ کنٹریکٹ ایڈریس پیسٹ کریں۔"
+          q: "میں پاک کوائن کو Trust Wallet یا MetaMask میں کیسے دیکھ سکتا ہوں؟",
+          a: "ویب سائٹ پر اوپر موجود 'Trust Wallet Guide' یا '+ $PAK' بٹن پر کلک کریں۔ ٹرسٹ والیٹ میں '+' دبائیں، نیٹ ورک میں 'BNB Smart Chain' منتخب کریں اور کنٹریکٹ ایڈریس (0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4) پیسٹ کریں۔ ایڈ کرتے ہی آپ کا پورا بیلنس ظاہر ہو جائے گا۔"
+        },
+        {
+          q: "Trust Wallet کی مین سرچ میں پاک کوائن خود بخود کیوں نہیں آتا؟",
+          a: "ہر نئے بی ای پی-20 ٹوکن کو والٹ میں پہلی بار 'Add Custom Token' کے ذریعے کنٹریکٹ ایڈریس ڈال کر شامل کرنا ضروری ہوتا ہے۔ جب کوائن مارکیٹ کیپ اور کوائن گیکو پر لسٹنگ کا عمل مکمل ہو جائے گا تو یہ خود بخود سرچ میں بھی آنے لگے گا۔"
+        },
+        {
+          q: "کیا میں PancakeSwap پر بھی $PAK ٹریڈ کر سکتا ہوں؟",
+          a: "جی ہاں! پاک کوائن بائننس اسمارٹ چین مین نیٹ پر موجود ایک مکمل سٹینڈرڈ ٹوکن ہے۔ آپ پین کیک سواپ (PancakeSwap DEX) کے ذریعے باآسانی براہ راست BNB سے $PAK کا تبادلہ کر سکتے ہیں۔"
         },
         {
           q: "کیا یہ سمارٹ کنٹریکٹ مکمل محفوظ ہے؟",

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useWeb3 } from "../context/Web3Context";
 import { translations } from "../translations/content";
-import { CONTRACT_CONFIG } from "../constants/contractInfo";
+import { CONTRACT_CONFIG, SOCIAL_LINKS } from "../constants/contractInfo";
 import {
   ArrowDownUp,
   Wallet,
@@ -11,11 +11,14 @@ import {
   Info,
   ExternalLink,
   Flame,
+  Settings2,
 } from "lucide-react";
 
 export const SwapWidget = () => {
   const {
     account,
+    chainId,
+    switchNetwork,
     connectWallet,
     buyPakTokens,
     bnbBalance,
@@ -26,6 +29,8 @@ export const SwapWidget = () => {
 
   const [bnbInput, setBnbInput] = useState("0.5");
   const [loading, setLoading] = useState(false);
+  const [slippage, setSlippage] = useState("0.5");
+  const [showSettings, setShowSettings] = useState(false);
 
   const t = translations[language].swap;
 
@@ -238,18 +243,32 @@ export const SwapWidget = () => {
               </div>
 
               {/* Rate & Gas Info */}
-              <div className="mt-4 p-3 rounded-xl bg-[#0a180e] border border-emerald-500/20 text-xs space-y-1 text-gray-300">
+              <div className="mt-4 p-3.5 rounded-xl bg-[#0a180e] border border-emerald-500/20 text-xs space-y-1.5 text-gray-300">
                 <div className="flex justify-between">
                   <span>Exchange Rate:</span>
                   <span className="font-bold text-amber-300">1 BNB = 10,000 $PAK</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Gas Network:</span>
-                  <span className="text-emerald-400">BNB Smart Chain (~$0.05)</span>
+                  <span>Network:</span>
+                  <span className="text-emerald-400 font-semibold">BNB Smart Chain (Gas &lt; $0.05)</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Presale Limits:</span>
-                  <span>{t.minMax}</span>
+                  <span>Slippage Tolerance:</span>
+                  <div className="flex gap-1.5 font-mono">
+                    {["0.5", "1.0", "2.5"].map((slip) => (
+                      <button
+                        key={slip}
+                        onClick={() => setSlippage(slip)}
+                        className={`px-1.5 py-0.5 rounded text-[10px] font-bold cursor-pointer transition-colors ${
+                          slippage === slip
+                            ? "bg-emerald-500 text-black"
+                            : "bg-emerald-950 text-gray-400 hover:text-white"
+                        }`}
+                      >
+                        {slip}%
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -263,6 +282,13 @@ export const SwapWidget = () => {
                     <Wallet className="w-5 h-5 text-black" />
                     <span>{t.actionConnect}</span>
                   </button>
+                ) : chainId !== 56 && chainId !== null ? (
+                  <button
+                    onClick={() => switchNetwork(56)}
+                    className="w-full py-4 rounded-2xl bg-amber-500 hover:bg-amber-400 text-black font-black text-base shadow-[0_0_25px_rgba(255,215,0,0.4)] flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                  >
+                    <span>Switch to BNB Smart Chain Mainnet</span>
+                  </button>
                 ) : (
                   <button
                     onClick={handleBuy}
@@ -275,8 +301,25 @@ export const SwapWidget = () => {
                 )}
               </div>
 
+              {/* PancakeSwap Direct Link Banner */}
+              <div className="mt-4 pt-4 border-t border-amber-400/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+                <div className="flex items-center space-x-1.5 text-gray-300">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  <span>Prefer DEX trading directly?</span>
+                </div>
+                <a
+                  href={SOCIAL_LINKS.pancakeswap}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-3.5 py-1.5 rounded-xl bg-amber-400/20 hover:bg-amber-400/30 border border-amber-400/40 text-amber-300 font-bold flex items-center space-x-1.5 transition-all"
+                >
+                  <span>Trade on PancakeSwap</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+
               {/* Note on Trust */}
-              <p className="text-[11px] text-center text-gray-400 mt-4">
+              <p className="text-[11px] text-center text-gray-400 mt-3">
                 Tokens are minted/transferred directly to your connected wallet upon confirmation.
               </p>
 

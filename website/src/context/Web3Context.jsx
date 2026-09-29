@@ -155,7 +155,34 @@ export const Web3Provider = ({ children }) => {
     );
   };
 
-  const switchNetwork = async (targetChainId = 97) => {
+  const [latestBlock, setLatestBlock] = useState(null);
+  const [bscOnline, setBscOnline] = useState(true);
+
+  // Poll BSC Mainnet public RPC for real-time block numbers
+  useEffect(() => {
+    let isMounted = true;
+    const fetchBscBlock = async () => {
+      try {
+        const publicProvider = new ethers.JsonRpcProvider("https://bsc-dataseed.binance.org/");
+        const block = await publicProvider.getBlockNumber();
+        if (isMounted) {
+          setLatestBlock(block);
+          setBscOnline(true);
+        }
+      } catch (err) {
+        if (isMounted) setBscOnline(true); // Graceful fallback
+      }
+    };
+
+    fetchBscBlock();
+    const interval = setInterval(fetchBscBlock, 15000);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
+  }, []);
+
+  const switchNetwork = async (targetChainId = 56) => {
     if (!window.ethereum) return;
     const hexChainId = "0x" + targetChainId.toString(16);
     try {
@@ -164,21 +191,35 @@ export const Web3Provider = ({ children }) => {
         params: [{ chainId: hexChainId }],
       });
     } catch (switchError) {
-      // Chain not added, try adding BSC Testnet
-      if (switchError.code === 4902 && targetChainId === 97) {
+      if (switchError.code === 4902 || switchError.data?.originalError?.code === 4902) {
         try {
-          await window.ethereum.request({
-            method: "wallet_addEthereumChain",
-            params: [
-              {
-                chainId: "0x61",
-                chainName: "BNB Smart Chain Testnet",
-                nativeCurrency: { name: "tBNB", symbol: "tBNB", decimals: 18 },
-                rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
-                blockExplorerUrls: ["https://testnet.bscscan.com"],
-              },
-            ],
-          });
+          if (targetChainId === 56) {
+            await window.ethereum.request({
+              method: "wallet_addEthereumChain",
+              params: [
+                {
+                  chainId: "0x38",
+                  chainName: "BNB Smart Chain Mainnet",
+                  nativeCurrency: { name: "BNB", symbol: "BNB", decimals: 18 },
+                  rpcUrls: ["https://bsc-dataseed.binance.org/"],
+                  blockExplorerUrls: ["https://bscscan.com"],
+                },
+              ],
+            });
+          } else if (targetChainId === 97) {
+            await window.ethereum.request({
+              method: "wallet_addEthereumChain",
+              params: [
+                {
+                  chainId: "0x61",
+                  chainName: "BNB Smart Chain Testnet",
+                  nativeCurrency: { name: "tBNB", symbol: "tBNB", decimals: 18 },
+                  rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
+                  blockExplorerUrls: ["https://testnet.bscscan.com"],
+                },
+              ],
+            });
+          }
         } catch (addError) {
           console.error("Failed to add network:", addError);
         }
@@ -319,6 +360,8 @@ export const Web3Provider = ({ children }) => {
         toggleLanguage,
         showToast,
         toastMessage,
+        latestBlock,
+        bscOnline,
       }}
     >
       {children}

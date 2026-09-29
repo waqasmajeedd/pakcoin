@@ -12,9 +12,10 @@ import {
   PlusCircle,
   LogOut,
   Layers,
+  Smartphone,
 } from "lucide-react";
 
-export const Navbar = ({ onOpenWhitepaper, onOpenSigner }) => {
+export const Navbar = ({ onOpenWhitepaper, onOpenSigner, onOpenTrustWallet }) => {
   const {
     account,
     truncatedAccount,
@@ -122,6 +123,16 @@ export const Navbar = ({ onOpenWhitepaper, onOpenSigner }) => {
             >
               <PlusCircle className="w-3.5 h-3.5 text-emerald-400" />
               <span>+ $PAK</span>
+            </button>
+
+            {/* Trust Wallet Setup Guide */}
+            <button
+              onClick={onOpenTrustWallet}
+              title="Trust Wallet & MetaMask Guide"
+              className="px-3 py-1.5 rounded-lg bg-emerald-900/40 border border-emerald-500/30 text-emerald-200 text-xs font-semibold hover:border-emerald-400 transition-all flex items-center space-x-1.5 cursor-pointer"
+            >
+              <Smartphone className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Trust Wallet</span>
             </button>
 
             {/* BscScan Ownership Signer Button */}
@@ -309,12 +320,31 @@ export const Navbar = ({ onOpenWhitepaper, onOpenSigner }) => {
               </div>
             )}
             <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenTrustWallet();
+              }}
+              className="w-full py-2.5 rounded-lg bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 text-xs font-bold flex items-center justify-center space-x-2"
+            >
+              <Smartphone className="w-4 h-4 text-emerald-400" />
+              <span>📱 Trust Wallet & MetaMask Guide</span>
+            </button>
+            <button
               onClick={addTokenToMetaMask}
               className="w-full py-2.5 rounded-lg border border-emerald-500/40 text-emerald-300 text-xs font-semibold flex items-center justify-center space-x-2"
             >
               <PlusCircle className="w-4 h-4 text-emerald-400" />
               <span>{t.addToMetaMask}</span>
             </button>
+            <a
+              href="https://pancakeswap.finance/swap?outputCurrency=0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4"
+              target="_blank"
+              rel="noreferrer"
+              className="w-full py-2.5 rounded-lg bg-amber-400/20 border border-amber-400/40 text-amber-300 text-xs font-bold flex items-center justify-center space-x-2"
+            >
+              <span>🥞 Trade on PancakeSwap DEX</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       )}

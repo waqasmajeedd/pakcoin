@@ -12,6 +12,8 @@ import { Roadmap } from "./components/Roadmap";
 import { HowToBuy } from "./components/HowToBuy";
 import { FAQ } from "./components/FAQ";
 import { Footer } from "./components/Footer";
+import { LiveTicker } from "./components/LiveTicker";
+import { TrustWalletModal } from "./components/TrustWalletModal";
 import { WhitepaperModal } from "./components/WhitepaperModal";
 import { SignatureModal } from "./components/SignatureModal";
 import { Sparkles, CheckCircle2 } from "lucide-react";
@@ -19,6 +21,7 @@ import { Sparkles, CheckCircle2 } from "lucide-react";
 function MainContent() {
   const [whitepaperOpen, setWhitepaperOpen] = useState(false);
   const [signerOpen, setSignerOpen] = useState(false);
+  const [trustWalletOpen, setTrustWalletOpen] = useState(false);
   const { toastMessage } = useWeb3();
 
   return (
@@ -34,15 +37,25 @@ function MainContent() {
         </div>
       )}
 
+      {/* Top Live Ticker Bar */}
+      <LiveTicker
+        onOpenTrustWallet={() => setTrustWalletOpen(true)}
+        onOpenSigner={() => setSignerOpen(true)}
+      />
+
       {/* Navbar */}
       <Navbar
         onOpenWhitepaper={() => setWhitepaperOpen(true)}
         onOpenSigner={() => setSignerOpen(true)}
+        onOpenTrustWallet={() => setTrustWalletOpen(true)}
       />
 
       {/* Main Sections */}
       <main className="flex-1">
-        <Hero onOpenWhitepaper={() => setWhitepaperOpen(true)} />
+        <Hero
+          onOpenWhitepaper={() => setWhitepaperOpen(true)}
+          onOpenTrustWallet={() => setTrustWalletOpen(true)}
+        />
         <StatsBar />
         <SwapWidget />
         <MiningDashboard />
@@ -64,6 +77,12 @@ function MainContent() {
       <WhitepaperModal
         isOpen={whitepaperOpen}
         onClose={() => setWhitepaperOpen(false)}
+      />
+
+      {/* Trust Wallet & MetaMask Step-by-Step Guide Modal */}
+      <TrustWalletModal
+        isOpen={trustWalletOpen}
+        onClose={() => setTrustWalletOpen(false)}
       />
 
       {/* BscScan Ownership Signature Modal */}
