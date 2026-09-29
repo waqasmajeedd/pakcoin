@@ -185,6 +185,17 @@ export const Footer = ({ onOpenWhitepaper, onOpenSigner }) => {
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
+
+              {/* BscScan Acknowledged Official Contact Email */}
+              <div className="pt-2.5 border-t border-emerald-500/15 flex items-center justify-between text-[11px]">
+                <span className="text-gray-400">Official Contact:</span>
+                <a
+                  href={`mailto:${SOCIAL_LINKS.email}`}
+                  className="text-emerald-400 hover:text-emerald-300 font-mono font-medium underline"
+                >
+                  {SOCIAL_LINKS.email}
+                </a>
+              </div>
             </div>
           </div>
 

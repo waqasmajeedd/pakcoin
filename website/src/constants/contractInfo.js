@@ -63,6 +63,8 @@ export const SOCIAL_LINKS = {
   pancakeswap: "https://pancakeswap.finance/swap?outputCurrency=0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4",
   dexscreener: "https://dexscreener.com/bsc/0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4",
   dextools: "https://www.dextools.io/app/en/bnb/pair-explorer/0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4",
+  email: "waqasmajeedd@gmail.com",
+  logo32: "https://waqasmajeedd.github.io/pakcoin/pakcoin-32x32.svg",
   whitepaperUrl: "#whitepaper",
 };
 
