@@ -5,7 +5,6 @@ import { Hero } from "./components/Hero";
 import { StatsBar } from "./components/StatsBar";
 import { Features } from "./components/Features";
 import { SwapWidget } from "./components/SwapWidget";
-import { MiningDashboard } from "./components/MiningDashboard";
 import { Tokenomics } from "./components/Tokenomics";
 import { StakingSimulator } from "./components/StakingSimulator";
 import { Roadmap } from "./components/Roadmap";
@@ -58,7 +57,6 @@ function MainContent() {
         />
         <StatsBar />
         <SwapWidget />
-        <MiningDashboard />
         <Features />
         <Tokenomics />
         <StakingSimulator />
