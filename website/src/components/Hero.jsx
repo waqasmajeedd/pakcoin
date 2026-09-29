@@ -159,7 +159,7 @@ export const Hero = ({ onOpenWhitepaper }) => {
                 <div className="flex items-center justify-between border-b border-emerald-500/20 pb-4">
                   <div className="flex items-center space-x-3">
                     <img
-                      src="/pakcoin-logo.svg"
+                      src="./pakcoin-logo.svg"
                       alt="Pak Coin"
                       className="w-12 h-12 rounded-full border border-emerald-500/40 p-1 bg-emerald-950"
                     />
@@ -181,7 +181,7 @@ export const Hero = ({ onOpenWhitepaper }) => {
                 <div className="my-6 flex flex-col items-center justify-center py-4 relative">
                   <div className="absolute w-44 h-44 rounded-full bg-emerald-500/10 animate-pulse-slow blur-xl" />
                   <img
-                    src="/pakcoin-logo.svg"
+                    src="./pakcoin-logo.svg"
                     alt="Pak Coin 3D Emblem"
                     className="w-44 h-44 object-contain animate-float drop-shadow-[0_10px_25px_rgba(0,230,118,0.5)] z-10"
                   />

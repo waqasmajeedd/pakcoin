@@ -29,7 +29,7 @@ export const Footer = ({ onOpenWhitepaper }) => {
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center space-x-3">
               <img
-                src="/pakcoin-logo.svg"
+                src="./pakcoin-logo.svg"
                 alt="Pak Coin"
                 className="w-10 h-10 object-contain"
               />

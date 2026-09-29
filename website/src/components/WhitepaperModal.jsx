@@ -25,7 +25,7 @@ export const WhitepaperModal = ({ isOpen, onClose }) => {
         {/* Modal Header */}
         <div className="px-6 py-4 border-b border-emerald-500/25 flex items-center justify-between bg-[#08180e]">
           <div className="flex items-center space-x-3">
-            <img src="/pakcoin-logo.svg" alt="Pak Coin" className="w-9 h-9" />
+            <img src="./pakcoin-logo.svg" alt="Pak Coin" className="w-9 h-9" />
             <div>
               <h2 className="text-lg font-black text-white flex items-center space-x-2">
                 <span>Pak Coin ($PAK) Official Whitepaper</span>

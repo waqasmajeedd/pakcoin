@@ -44,7 +44,7 @@ export const Navbar = ({ onOpenWhitepaper }) => {
           <div className="flex items-center space-x-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <div className="relative">
               <img
-                src="/pakcoin-logo.svg"
+                src="./pakcoin-logo.svg"
                 alt="Pak Coin"
                 className="w-12 h-12 object-contain animate-float filter drop-shadow-[0_0_12px_rgba(0,230,118,0.5)]"
               />
