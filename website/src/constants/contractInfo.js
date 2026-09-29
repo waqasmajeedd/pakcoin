@@ -5,10 +5,10 @@ export const CONTRACT_CONFIG = {
   symbol: "PAK",
   decimals: 18,
   totalSupply: "1,000,000,000",
-  // Default demo / placeholder contract address (User will replace after deployment)
-  address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  // Official Deployed BSC Mainnet Contract Address
+  address: "0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4",
   // Miner Contract Address
-  minerAddress: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+  minerAddress: "0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4",
   // Official Binance Smart Chain Testnet & Mainnet chain info
   supportedChains: {
     56: {
@@ -36,7 +36,7 @@ export const CONTRACT_CONFIG = {
       symbol: "ETH",
     }
   },
-  defaultChainId: 97, // Defaults to BSC Testnet for easy safe testing
+  defaultChainId: 56, // Defaults to BSC Mainnet for official live token
   presaleRate: 10000, // 1 BNB = 10,000 PAK
   minBuyBNB: "0.05",
   maxBuyBNB: "10.0",
@@ -58,8 +58,8 @@ export const SOCIAL_LINKS = {
   telegram: "https://t.me/PakCoinOfficial",
   twitter: "https://twitter.com/PakCoinCrypto",
   discord: "https://discord.gg/pakcoin",
-  github: "https://github.com/pakcoin/pak-coin-protocol",
-  bscscan: `https://testnet.bscscan.com/token/${CONTRACT_CONFIG.address}`,
+  github: "https://github.com/waqasmajeedd/pakcoin",
+  bscscan: "https://bscscan.com/token/0xf472713Bb703ef09BC7097724a6Dd7dEaB117fC4",
   whitepaperUrl: "#whitepaper",
 };
 
