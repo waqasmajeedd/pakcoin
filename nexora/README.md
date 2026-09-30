@@ -25,13 +25,16 @@ Nexora ($NXRA) is an institutional-grade digital asset engineered for maximum se
 ```
 nexora/
 ├── contracts/
-│   ├── NexoraToken.sol      # Core BEP-20 / ERC-20 token contract
+│   ├── NexoraToken.sol      # Core BEP-20 / ERC-20 token contract (1B Fixed)
+│   ├── NexoraMiner.sol      # Bitcoin-Style PoW Mining Engine (500M Pool, Halving)
 │   ├── NexoraAirdrop.sol    # Gas-optimized batch transfer distributor
 │   └── NexoraVesting.sol    # Linear vesting contract for team / ecosystem lock
 ├── scripts/
-│   └── deploy.js            # Automated deployment and verification script
+│   ├── deploy.js            # Automated deployment and verification script
+│   └── mine.js              # Autonomous Proof-of-Work mining client
 ├── test/
-│   └── NexoraToken.test.js  # 16 automated unit & security tests
+│   ├── NexoraToken.test.js  # Token & security unit tests
+│   └── NexoraMiner.test.js  # PoW mining & halving tests
 ├── hardhat.config.js        # Hardhat configuration (Solidity 0.8.24 Cancun)
 ├── package.json             # NPM dependencies & scripts
 ├── WHITEPAPER.md            # Complete institutional whitepaper & tokenomics
