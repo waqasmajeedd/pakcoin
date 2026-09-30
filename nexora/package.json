@@ -1,0 +1,34 @@
+{
+  "name": "nexora-network-protocol",
+  "version": "1.0.0",
+  "description": "Nexora ($NXRA) - Institutional Tier-1 Decentralized Web3 Asset & Global Settlement Protocol",
+  "main": "scripts/deploy.js",
+  "scripts": {
+    "test": "npx hardhat test",
+    "compile": "npx hardhat compile",
+    "deploy:local": "npx hardhat run scripts/deploy.js --network localhost",
+    "deploy:bsc-testnet": "npx hardhat run scripts/deploy.js --network bscTestnet",
+    "deploy:bsc-mainnet": "npx hardhat run scripts/deploy.js --network bscMainnet"
+  },
+  "keywords": [
+    "nexora",
+    "nxra",
+    "crypto",
+    "bep20",
+    "erc20",
+    "web3",
+    "fintech",
+    "defi",
+    "solidity"
+  ],
+  "author": "Nexora Global Foundation",
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.6.1"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^16.4.7",
+    "hardhat": "^2.22.18"
+  }
+}
