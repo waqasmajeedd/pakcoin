@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE259"/>
+      <stop offset="100%" stop-color="#FFD700"/>
+    </linearGradient>
+    <linearGradient id="neonEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00FFA3"/>
+      <stop offset="100%" stop-color="#008744"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14281E"/>
+      <stop offset="100%" stop-color="#050C08"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="250" cy="250" r="235" fill="#020804" stroke="url(#goldGrad)" stroke-width="12"/>
+  <polygon points="250,60 414,155 414,345 250,440 86,345 86,155" fill="url(#shieldGrad)" stroke="url(#neonEmerald)" stroke-width="8"/>
+
+  <!-- Stem of P -->
+  <path d="M 172 135 L 214 135 L 214 365 L 172 365 Z" fill="url(#neonEmerald)"/>
+
+  <!-- Loop of P -->
+  <path d="M 214 135 L 295 135 C 345 135 375 160 375 205 C 375 250 345 275 295 275 L 214 275 Z 
+           M 214 175 L 214 235 L 290 235 C 315 235 330 225 330 205 C 330 185 315 175 290 175 Z" fill="url(#goldGrad)" fill-rule="evenodd"/>
+
+  <!-- Dynamic Slash -->
+  <polygon points="250,265 345,365 295,365 214,280" fill="url(#neonEmerald)"/>
+</svg>
