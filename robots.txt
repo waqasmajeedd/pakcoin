@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://waqasmajeedd.github.io/pakcoin/sitemap.xml
+Sitemap: https://nexora.network/sitemap.xml
