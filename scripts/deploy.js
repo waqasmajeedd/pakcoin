@@ -1,11 +1,11 @@
-// Automated Deployment & Sync script for Pak Coin & Miner
+// Automated Deployment & Sync script for Pak Coin ($PAK)
 const hre = require("hardhat");
 const fs = require("fs");
 const path = require("path");
 
 async function main() {
   console.log("==================================================");
-  console.log("🚀 Starting Deployment of Pak Coin Protocol Ecosystem...");
+  console.log("🚀 Starting Deployment of Pak Coin Protocol ($PAK)...");
   console.log("==================================================");
 
   const [deployer] = await hre.ethers.getSigners();
@@ -20,43 +20,35 @@ async function main() {
   }
 
   // 1. Deploy PakCoin
-  console.log("\n[1/3] Deploying PakCoin ($PAK)...");
+  console.log("\n[1/2] Deploying Institutional-Grade PakCoin ($PAK)...");
   const PakCoin = await hre.ethers.getContractFactory("PakCoin");
   const pakCoin = await PakCoin.deploy();
   await pakCoin.waitForDeployment();
   const tokenAddress = await pakCoin.getAddress();
   console.log("✅ Pak Coin ($PAK) Deployed at:", tokenAddress);
 
-  // 2. Deploy PakCoinMiner
-  console.log("\n[2/3] Deploying PakCoinMiner...");
-  const PakCoinMiner = await hre.ethers.getContractFactory("PakCoinMiner");
-  const miner = await PakCoinMiner.deploy(tokenAddress);
-  await miner.waitForDeployment();
-  const minerAddress = await miner.getAddress();
-  console.log("✅ PakCoinMiner Deployed at:", minerAddress);
+  // 2. Deploy PakAirdrop (Helper Utility)
+  console.log("\n[2/2] Deploying PakAirdrop helper utility...");
+  const PakAirdrop = await hre.ethers.getContractFactory("PakAirdrop");
+  const airdrop = await PakAirdrop.deploy();
+  await airdrop.waitForDeployment();
+  const airdropAddress = await airdrop.getAddress();
+  console.log("✅ PakAirdrop Deployed at:", airdropAddress);
 
-  // 3. Fund Miner Pool with 100,000,000 PAK
-  console.log("\n[3/3] Funding Mining Pool with 100,000,000 $PAK...");
-  const poolAmount = hre.ethers.parseUnits("100000000", 18);
-  const fundTx = await pakCoin.transfer(minerAddress, poolAmount);
-  await fundTx.wait();
-  console.log("✅ Mining Pool Successfully Funded!");
-
-  // 4. Auto-update website/src/constants/contractInfo.js
+  // 3. Auto-update website/src/constants/contractInfo.js
   console.log("\n[SYNC] Updating website frontend configuration...");
   const configPath = path.join(__dirname, "../website/src/constants/contractInfo.js");
   if (fs.existsSync(configPath)) {
     let content = fs.readFileSync(configPath, "utf8");
     content = content.replace(/address:\s*"0x[a-fA-F0-9]{40}"/, `address: "${tokenAddress}"`);
-    content = content.replace(/minerAddress:\s*"0x[a-fA-F0-9]{40}"/, `minerAddress: "${minerAddress}"`);
     fs.writeFileSync(configPath, content, "utf8");
-    console.log("✅ Website contractInfo.js updated with new deployed addresses!");
+    console.log("✅ Website contractInfo.js updated with new deployed address!");
   }
 
   console.log("\n==================================================");
-  console.log("🎉 ALL CONTRACTS DEPLOYED & CONFIGURED SUCCESSFULLY!");
-  console.log("Token Contract Address:", tokenAddress);
-  console.log("Miner Contract Address:", minerAddress);
+  console.log("🎉 DEPLOYMENT COMPLETE & SECURE!");
+  console.log("Token Contract Address:  ", tokenAddress);
+  console.log("Airdrop Contract Address:", airdropAddress);
   console.log("==================================================");
 }
 
