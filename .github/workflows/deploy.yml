@@ -1,4 +1,4 @@
-name: Deploy Website to GitHub Pages
+name: Deploy Nexora Website to GitHub Pages
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./website
+        working-directory: ./nexora/website
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,7 +29,7 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: website/package-lock.json
+          cache-dependency-path: nexora/website/package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -43,7 +43,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./website/dist
+          path: ./nexora/website/dist
 
   deploy:
     environment:
