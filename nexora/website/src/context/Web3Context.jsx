@@ -229,7 +229,7 @@ export const Web3Provider = ({ children }) => {
             address: CONTRACT_CONFIG.address,
             symbol: CONTRACT_CONFIG.symbol,
             decimals: CONTRACT_CONFIG.decimals,
-            image: "https://raw.githubusercontent.com/pakcoin/assets/main/pakcoin.png",
+            image: "https://raw.githubusercontent.com/nexora-network/assets/main/nexora-logo.png",
           },
         },
       });

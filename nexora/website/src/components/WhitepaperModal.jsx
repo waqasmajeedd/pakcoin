@@ -25,16 +25,16 @@ export const WhitepaperModal = ({ isOpen, onClose }) => {
         {/* Modal Header */}
         <div className="px-6 py-4 border-b border-emerald-500/25 flex items-center justify-between bg-[#08180e]">
           <div className="flex items-center space-x-3">
-            <img src="./pakcoin-logo.svg" alt="Pak Coin" className="w-9 h-9" />
+            <img src="./nexora-logo.svg" alt="Nexora" className="w-9 h-9" />
             <div>
               <h2 className="text-lg font-black text-white flex items-center space-x-2">
-                <span>Pak Coin ($PAK) Official Whitepaper</span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-500/30">
-                  v1.2 Release
+                <span>Nexora Protocol ($NXRA) Official Whitepaper</span>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-950 text-amber-400 border border-amber-500/30">
+                  v1.0 Institutional
                 </span>
               </h2>
-              <p className="text-xs text-gray-400">
-                The Decentralized Utility Protocol for Global Digital Finance
+              <p className="text-xs text-slate-400">
+                Autonomous Proof-of-Work & Halving Web3 Protocol
               </p>
             </div>
           </div>

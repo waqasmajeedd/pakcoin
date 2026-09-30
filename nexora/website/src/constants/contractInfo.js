@@ -32,7 +32,7 @@ export const SOCIAL_LINKS = {
   telegram: "https://t.me/NexoraNetwork",
   twitter: "https://twitter.com/NexoraNetwork",
   discord: "https://discord.gg/nexora",
-  github: "https://github.com/waqasmajeedd/pakcoin/tree/main/nexora",
+  github: "https://github.com/nexora-network/nexora",
   bscscan: "https://bscscan.com",
   pancakeswap: "https://pancakeswap.finance",
   dexscreener: "https://dexscreener.com",

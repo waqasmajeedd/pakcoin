@@ -29,18 +29,18 @@ export const Footer = ({ onOpenWhitepaper, onOpenSigner }) => {
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center space-x-3">
               <img
-                src="./pakcoin-logo.svg"
-                alt="Pak Coin"
+                src="./nexora-logo.svg"
+                alt="Nexora"
                 className="w-10 h-10 object-contain"
               />
               <span className="text-2xl font-black text-white tracking-wider">
-                PAK <span className="text-emerald-400">COIN</span>
+                NEXORA <span className="text-amber-400">$NXRA</span>
               </span>
             </div>
-            <p className={`text-sm text-gray-400 max-w-sm leading-relaxed ${language === 'ur' ? 'urdu-font text-base' : ''}`}>
+            <p className={`text-sm text-slate-400 max-w-sm leading-relaxed ${language === 'ur' ? 'urdu-font text-base' : ''}`}>
               {language === "ur"
-                ? "پاک کوائن ($PAK) ایک غیر مرکزی خود مختار ڈیجیٹل اثاثہ ہے۔ کم ترین فیس، تیز رفتار عالمی ادائیگیاں اور محفوظ مالیاتی مستقبل۔"
-                : "Pak Coin ($PAK) is a decentralized cryptocurrency powering instant borderless payments, decentralized liquidity, and Web3 commerce."}
+                ? "نیکزورا ($NXRA) ایک خود مختار کرپٹو گرافک پروٹوکول ہے جو بٹ کوائن طرز کی PoW ہالونگ مائننگ اور اوپن زیپلن کے محفوظ ترین سمارٹ کنٹریکٹس پر کام کرتا ہے۔"
+                : "Nexora ($NXRA) is an institutional cryptocurrency powering autonomous Proof-of-Work emission, Bitcoin-style mathematical halving, and zero transfer fees."}
             </p>
 
             {/* Social Icons */}

@@ -5,7 +5,7 @@ import { X, Check, Copy, KeyRound, ExternalLink, ShieldCheck } from "lucide-reac
 
 export const SignatureModal = ({ isOpen, onClose }) => {
   const { account, connectWallet, showToast, language } = useWeb3();
-  const [message, setMessage] = useState("Verify ownership of PakCoin");
+  const [message, setMessage] = useState("Verify ownership of Nexora Protocol");
   const [signatureHash, setSignatureHash] = useState("");
   const [isSigning, setIsSigning] = useState(false);
   const [copiedField, setCopiedField] = useState("");

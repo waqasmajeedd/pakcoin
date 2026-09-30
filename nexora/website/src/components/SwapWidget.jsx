@@ -276,11 +276,11 @@ export const SwapWidget = () => {
                   </div>
                   <div className="flex items-center space-x-2 pl-3 border-l border-emerald-500/20 shrink-0">
                     <img
-                      src="./pakcoin-logo.svg"
-                      alt="PAK"
-                      className="w-7 h-7 rounded-full"
+                      src="./nexora-logo.svg"
+                      alt="NXRA"
+                      className="w-7 h-7 rounded-lg"
                     />
-                    <span className="font-extrabold text-white text-sm">PAK</span>
+                    <span className="font-extrabold text-white text-sm">NXRA</span>
                   </div>
                 </div>
               </div>
